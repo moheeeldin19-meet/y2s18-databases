@@ -6,15 +6,19 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class Knowledge(Base):
-	__tablename__="knowledge"
-	knowledge_id = column(integer,primary_key=True)
-	subject= column(string)
-	wikipdia= column(string)
-	rating= column(integer)
-	def __repr__(Self):
-		return("subject:{}\n"
-			"wikipedia:{}\n"
-			"rating:{}\n").format(self.subject, self.wikipedia,self.rating)
+	__tablename__="Knowledge"
+	knowledge_id = Column(Integer,primary_key=True)
+	subject= Column(String)
+	topic= Column(String)
+	rating= Column(Integer)
+	def __repr__(self):
+		return("knowledge_id:{}\n"
+			"subject:{}\n"
+			"topic:{}\n"
+			"rating:{}\n").format(self.knowledge_id,self.subject, self.topic,self.rating)
+
+
+
 
     # Create a table with 4 columns
 	# The first column will be the primary key
@@ -24,4 +28,4 @@ class Knowledge(Base):
 	# topic of the article. The last column will be
 	# an integer, representing your rating of the article.
 
-	pass
+	# passdded to the DB!

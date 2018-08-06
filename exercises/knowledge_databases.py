@@ -8,14 +8,46 @@ Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-def add_article():
-	pass
+def add_subject(subject,topic,rating):
+
+	knowledge_object=Knowledge(
+		# knowledge_id=knowledge_id,
+		subject=subject,
+		topic=topic,
+		rating=rating)
+	session.add(knowledge_object)
+	session.commit()
+add_subject("eggplants","eggplants" , 1)
 
 def query_all_articles():
-	pass
+   """
+   Print all the students
+   in the database.
+   """
+   knowledge = session.query(
+      Knowledge).all()
+   return knowledge
 
-def query_article_by_topic():
-	pass
+print(query_all_articles())
+
+
+def query_article_by_topic(topic):
+   """
+   Find the first student
+   in the database, by their name
+   """
+   knowledge = session.query(
+       Knowledge).filter_by(
+       topic=topic).first()
+   return knowledge
+print(query_article_by_topic("potatoes"))
+def query_article_by_rating(rating):
+	knowledge = session.query(
+		Knowledge).filter_by(
+		rating=rating).first()
+	return knowledge
+print(query_article_by_rating(1))
+
 
 def delete_article_by_topic():
 	pass
